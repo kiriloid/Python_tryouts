@@ -148,7 +148,7 @@ if __name__ == "__main__":
     parser = args_module.get_arguments()
     source_path = os.path.abspath(parser['source_path']) + os.sep
     destination_path = os.path.abspath(parser['destination']) + os.sep
-    parser['image'] = True  # hardcoded option, for simplicity of debugging of main_script (will be deleted afterwards)
+    # parser['image'] = True  # hardcoded option, for simplicity of debugging of main_script (will be deleted afterwards)
 
     os.makedirs(os.path.abspath(os.curdir) + os.sep + "logs" + os.sep, exist_ok=True)
 
@@ -162,8 +162,8 @@ if __name__ == "__main__":
     returned_media_type = media_selection(parser['video'], parser['audio'], parser['image'])
     returned_file_list = search_and_copy(source_path, destination_path, returned_media_type, int(parser['count']))
 
-    # safe_delete(returned_file_list, parser['safe_delete'])
-    # sorting(destination_path, parser['formatting'])
+    safe_delete(returned_file_list, parser['safe_delete'])
+    sorting(destination_path, parser['formatting'])
     # smart_sorting(destination_path, parser['formatting']) # not yet implemented
 
     logging.info('End of program')
